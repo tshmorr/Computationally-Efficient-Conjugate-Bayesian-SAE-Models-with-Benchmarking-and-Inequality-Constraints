@@ -35,7 +35,7 @@ source("analysis/chalm_nonspatial/mcmc_chalm_nonspatial.r")
 ## -------------------------------------------------
 ## Read analysis df
 ## -------------------------------------------------
-df <- readRDS("data/analysis_data.RDS")
+df <- readRDS("analysis/analysis_data.RDS")
 ggplot(df) + geom_sf() + theme_minimal()
 
 ## Addressing missing data issues
