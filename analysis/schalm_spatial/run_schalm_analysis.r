@@ -30,12 +30,12 @@ library(scales)
 library(sf)
 library(FNN)
 library(cowplot)
-source('mcmc_schalm_spatial.r')
+source("analysis/schalm_spatial/mcmc_schalm_spatial.r")
 
 ## -------------------------------------------------
 ## Read analysis df
 ## -------------------------------------------------
-df <- readRDS("analysis_data.RDS")
+df <- readRDS("data/analysis_data.RDS")
 ggplot(df) + geom_sf() + theme_minimal()
 
 ## Imputing Missing Data
