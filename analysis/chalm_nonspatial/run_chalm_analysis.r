@@ -30,12 +30,12 @@ library(scales)
 library(sf)
 library(cowplot)
 library(FNN)
-source('mcmc_chalm_nonspatial.r')
+source("analysis/chalm_nonspatial/mcmc_chalm_nonspatial.r")
 
 ## -------------------------------------------------
 ## Read analysis df
 ## -------------------------------------------------
-df <- readRDS("analysis_data.RDS")
+df <- readRDS("data/analysis_data.RDS")
 ggplot(df) + geom_sf() + theme_minimal()
 
 ## Addressing missing data issues
