@@ -47,16 +47,7 @@ cv_defaults <- c(IL = 1.3, WI = 4.2, OH = 2.2, MO = 1.2, MN = 1.3, MI = 4.3, IA 
 i <- is.na(df$`CV (%)`)
 df$`CV (%)`[i] <- cv_defaults[df$STUSPS[i]]
 
-## 3. Production Bushels for other counties
-other_counties <- list(IL = 108146367, IN = 987654, IA = 14193900, MI = 16292256, MN = 127868076, MO = 114921840, OH = 9839148, WI = 410337)
-temp <- knn_constrained_allocation_by_state(counties_sf = df, value_col = "production_bushels", state_col = "STUSPS", all_other_totals = other_counties, k = 5)
-temp <- temp %>% st_drop_geometry() %>% dplyr::select(STATEFP, COUNTYFP, value_imputed, allocation_status)
-idx_na <- which(is.na(df$production_bushels))
-match_idx <- match(paste(df$STATEFP[idx_na], df$COUNTYFP[idx_na]), paste(temp$STATEFP, temp$COUNTYFP))
-df$production_bushels[idx_na] <- temp$value_imputed[match_idx]
-df <- df %>% dplyr::select(-se, -Var)
-
-## 4. SE and Variance
+## 3. SE and Variance
 df$se <- (df$`CV (%)`)/100 * df$production_bushels
 df$Var <- df$se^2
 
@@ -79,7 +70,6 @@ SS <- obs_data$SS
 cVec <- df$cvec
 
 ## Fit model using each state's benchmark
-#aTot_state <- c("IL" = 1716079078, "IA"= 2419901737, "MN" = 1324138682, "IN" = 879918936, "MI" = 302808059, "OH" = 584933770, "WI" = 505376067, "MO" = 301078583)
 aTot_state <- c("IL" = 2143284486, "IA"= 2511484113, "MN" = 1478451268, "IN" = 1039725085, "MI" = 467281181, "OH" = 608637574, "WI" = 533043125, "MO" = 301078583)
 state_id <- df$STUSPS
 fit2 <- saeFit_con_icar2_incidence_obs_multistate(
