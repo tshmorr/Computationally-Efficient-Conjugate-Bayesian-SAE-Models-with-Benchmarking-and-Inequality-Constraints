@@ -3,7 +3,7 @@
 ###############################################################################
 
 ## Unconstrained non-spatial model
-saeFit_uncon <- function(Y, X, Psi, S2, SS, a=0.5, b=0.5, w=1000, rho=1000, sig2b=1000, iter=3000, burn=1000, alpha=1, propSD=10){
+saeFit_uncon <- function(Y, X, Psi, S2, SS, a=0.5, b=0.5, w=1000, rho=1000, sig2b=1000, iter=3000, burn=1000, alpha=1000, propSD=10){
   df <- (SS-1)
   n <- length(Y)
   p <- ncol(X)
@@ -71,7 +71,7 @@ saeFit_uncon <- function(Y, X, Psi, S2, SS, a=0.5, b=0.5, w=1000, rho=1000, sig2
 
 
 ## Unconstrained spatial ICAR model
-saeFit_uncon_icar2 <- function(Y, X, Psi, S2, SS, W, a=0.5, b=0.5, w=1, rho=1, sig2b=1000, iter=3000, burn=1000, alpha=1, propSD=10){
+saeFit_uncon_icar2 <- function(Y, X, Psi, S2, SS, W, a=0.5, b=0.5, w=1, rho=1, sig2b=1000, iter=3000, burn=1000, alpha=1000, propSD=10){
   df <- (SS-1)
   n <- length(Y)
   p <- ncol(X)
