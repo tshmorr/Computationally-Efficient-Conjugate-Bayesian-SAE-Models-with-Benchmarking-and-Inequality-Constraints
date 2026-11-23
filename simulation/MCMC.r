@@ -62,7 +62,7 @@ rTruncCMLG <- function(H=matrix(rnorm(6),3), alpha=c(1,1,1), kappa=c(1,1,1), cut
 }
 
 ## Non-Spatial Model 
-saeFit_con <- function(Y, X, Psi, S2, SS, a = 0.5, b = 0.5, w = 1000, rho = 1000, sig2b = 1000, iter = 3000, burn = 1000, alpha = 1, propSD = 10, cVec = NULL, aTot = NULL){
+saeFit_con <- function(Y, X, Psi, S2, SS, a = 0.5, b = 0.5, w = 1000, rho = 1000, sig2b = 1000, iter = 3000, burn = 1000, alpha = 1000, propSD = 10, cVec = NULL, aTot = NULL){
   n <- length(Y)
   p <- ncol(X)
   r <- ncol(Psi)
