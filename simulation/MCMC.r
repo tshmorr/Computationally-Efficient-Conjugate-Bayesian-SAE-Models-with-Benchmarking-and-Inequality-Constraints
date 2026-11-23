@@ -255,7 +255,7 @@ saeFit_con_icar2 <- function(
     a = 0.5, b = 0.5,        
     sig2b1 = 1000,           
     sig2b2 = 1000,            
-    alpha = 1,
+    alpha = 1000,
     propSD = 10,
     iter = 3000, burn = 1000,
     cVec = NULL, aTot = NULL,
